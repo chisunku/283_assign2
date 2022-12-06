@@ -1,18 +1,32 @@
-Linux kernel
-============
+# CMPE 283 Assignment 2 
 
-There are several guides for kernel developers and users. These guides can
-be rendered in a number of formats, like HTML and PDF. Please read
-Documentation/admin-guide/README.rst first.
+## GCP instance config
 
-In order to build the documentation, use ``make htmldocs`` or
-``make pdfdocs``.  The formatted documentation can also be read online at:
-
-    https://www.kernel.org/doc/html/latest/
-
-There are various text files in the Documentation/ subdirectory,
-several of them using the Restructured Text markup notation.
-
-Please read the Documentation/process/changes.rst file, as it contains the
-requirements for building and running the kernel, and information about
-the problems which may result by upgrading your kernel.
+## Enabling nested virtualization on the GCP instance 
+    - Generate the yaml file for the instance using cmd:
+        gcloud compute instances export instance-4 \
+        --destination=instance-4.yml \
+        --zone=us-central1-a
+    - Make changes in the yaml file 
+        advancedMachineFeatures:
+ 		  enableNestedVirtualization: true
+    - Update the VM with the new config. Run the following cmd: 
+        gcloud compute instances update-from-file instance-4 \
+        --source=/home/ujwalabalbhim_mote/instance-4.yml \
+        --most-disruptive-allowed-action=RESTART \
+        --zone=us-central1-a
+## Create and build kernel module:
+    - Clone the git repo : git clone https://github.com/torvalds/linux.git
+    - Check linux version by running command : 
+        uname –a
+    - Install kernel package : 
+        sudo apt-get install build-essential kernel-package fakeroot libncurses5-dev libssl-dev ccache bison flex libelf-dev
+    - Go into kenrel by cd command : cd linux
+    - copy the config: cp /boot/config-$(uname -r) ./.config
+    - Then run sudo make oldconfig and keep default for all the config.
+    - Kernel build: (we have 8 cpu’s)
+        - make -j 8 modules  -- build modules 
+        - make -j 8  --- build kernel
+        - sudo make INSTALL_MOD_STRIP=1 modules_install
+        - sudo make install
+        
