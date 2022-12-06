@@ -71,7 +71,7 @@ MODULE_AUTHOR("Qumranet");
 MODULE_LICENSE("GPL");
 
 extern u32 total_exits;
-extern u32 total_cycles;
+extern u64 total_cycles;
 
 #ifdef MODULE
 static const struct x86_cpu_id vmx_cpu_id[] = {
@@ -6289,7 +6289,7 @@ static int __vmx_handle_exit(struct kvm_vcpu *vcpu, fastpath_t exit_fastpath)
 	union vmx_exit_reason exit_reason = vmx->exit_reason;
 	u32 vectoring_info = vmx->idt_vectoring_info;
 	u16 exit_handler_index;
-	u32 beginTime = rdtsc();
+	u64 beginTime = rdtsc();
 	total_exits++;
 	
 	/*

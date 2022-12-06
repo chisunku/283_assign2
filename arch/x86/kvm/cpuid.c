@@ -1493,7 +1493,7 @@ bool kvm_cpuid(struct kvm_vcpu *vcpu, u32 *eax, u32 *ebx,
 EXPORT_SYMBOL_GPL(kvm_cpuid);
 u32 total_exits;
 EXPORT_SYMBOL(total_exits);
-u32 total_cycles;
+u64 total_cycles;
 EXPORT_SYMBOL(total_cycles);
 int kvm_emulate_cpuid(struct kvm_vcpu *vcpu)
 {
