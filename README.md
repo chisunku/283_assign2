@@ -30,11 +30,11 @@
         - sudo make INSTALL_MOD_STRIP=1 modules_install
         - sudo make install
         (above step will take time at the first time to be completed)
- Before the kernel build 
+    - Before the kernel build 
  <img width="468" alt="image" src="https://user-images.githubusercontent.com/112213523/205819104-f4afb6af-0f6f-41da-9039-565423b8747d.png">
-
-Once the build is done run sudo reboot
- And then check the uname –a which will be new version of linux.
+    
+    - Once the build is done run sudo reboot
+    - And then check the uname –a which will be new version of linux.
 ![image](https://user-images.githubusercontent.com/112213523/205819138-a0ff144d-c3eb-4cda-8c13-868a8a78d375.png)
 
 ## Make the code changes as per the assignment requirement
@@ -42,42 +42,44 @@ Once the build is done run sudo reboot
     - sudo make modules && sudo make -j 8 modules_install
 <img width="468" alt="image" src="https://user-images.githubusercontent.com/112213523/205819381-baa495c3-85c6-4492-82a2-05036920782b.png">
 
-Edit the cupid.c file and vmx.c file then rebuild kernel using commands:
-sudo make modules && sudo make -j 8 modules_install
+## Code changes
+    - Edit the arch/x86/kvm/cupid.c file and arch/x86/kvm/vmx/vmx.c 
+    - Rebuild the kernel: 
+        sudo make modules && sudo make -j 8 modules_install
 
-lsmod | grep kvm
+## check for kvm
+    - lsmod | grep kvm
 <img width="468" alt="image" src="https://user-images.githubusercontent.com/112213523/205819511-015c9208-689a-4c85-a2bb-ecccf11bc09e.png">
-
-sudo rmmod  kvm_intel
-sudo rmmod  kvm
+    
+    - if present do the following:
+        sudo rmmod  kvm_intel
+        sudo rmmod  kvm
 <img width="468" alt="image" src="https://user-images.githubusercontent.com/112213523/205819562-3403f42f-25e8-4c92-bbe4-5b9cc92c1f80.png">
 
-add kvm and kvm_intel by using commands:
+    - modprobe kvm and kvm_intel:
+        sudo modprobe kvm
+        sudo modprobe kvm_intel
 <img width="468" alt="image" src="https://user-images.githubusercontent.com/112213523/205819611-d1a26134-4a68-4a4f-b947-6524dd614022.png">
 
-Test:
+##Test:
 
-Install nested VM
+###Install nested VM
 
-sudo apt-get install cpu-checker
-        sudo apt update
-        sudo apt-get install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
-        sudo kvm-ok
-        sudo reboot
+    - sudo apt-get install cpu-checker
+    - sudo apt update
+    - sudo apt-get install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
+    - sudo kvm-ok
+    - sudo reboot
+    - sudo apt -y install bridge-utils cpu-checker libvirt-clients libvirt-daemon qemu qemu-kvm
+    - sudo virt-install --name ubuntu-guest --os-variant ubuntu20.04 --vcpus 2 --ram 2048 --location           http://ftp.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/ --network bridge=virbr0,model=virtio --graphics none --extra-args='console=ttyS0,115200n8 serial'
 
+Note:
+    If installation gets stuck with error KVM guest hangs at Escape character is ^]
+    then follow - https://base64.co.za/kvm-guest-hangs-at-escape-character-is-solved/
 
-sudo apt -y install bridge-utils cpu-checker libvirt-clients libvirt-daemon qemu qemu-kvm
-
-
-sudo virt-install --name ubuntu-guest --os-variant ubuntu20.04 --vcpus 2 --ram 2048 --location http://ftp.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/ --network bridge=virbr0,model=virtio --graphics none --extra-args='console=ttyS0,115200n8 serial'
-
-if installation gets stuck with error KVM guest hangs at Escape character is ^]
-then follow - https://base64.co.za/kvm-guest-hangs-at-escape-character-is-solved/
-
-after installation run below commands
-sudo apt-get update
-sudo apt-get install cpuid
-
+### After installation run below commands
+    - sudo apt-get update
+    - sudo apt-get install cpuid
 <img width="468" alt="image" src="https://user-images.githubusercontent.com/112213523/205819667-2eb71df1-8eb8-4001-9d53-397cb04c7623.png">
 
 ## Outputs
