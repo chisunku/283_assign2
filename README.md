@@ -19,7 +19,8 @@
     - Ran the test.c to generate the output.
     - Checked the output using cpuid as well.
 
-## GCP instance config
+## GCP instance creation
+    gcloud compute instances create instance-5 --machine-type=n2-standard-8 --boot-disk-size=200 --enable-nested-virtualization
 
 ## Enabling nested virtualization on the GCP instance 
     - Generate the yaml file for the instance using cmd:
