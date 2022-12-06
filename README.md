@@ -110,7 +110,7 @@ Note:
 <img width="468" alt="image" src="https://user-images.githubusercontent.com/112213523/205819810-d8163a52-f5eb-446d-af11-807d0dca4bd3.png">
 
     - Rebooted the inner VM and tested using test file:
-![WhatsApp Image 2022-12-05 at 8 50 42 PM](https://user-images.githubusercontent.com/112213523/205819900-6ce642c0-077c-4507-a34e-414bda812216.jpeg)
+<img width="804" alt="Screen Shot 2022-12-05 at 11 18 36 PM" src="https://user-images.githubusercontent.com/112213523/205846334-8cdee6b1-7239-4a56-995e-b48b49566b10.png">
 
 
 
