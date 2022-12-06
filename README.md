@@ -1,5 +1,24 @@
 # CMPE 283 Assignment 2 
 
+## Work Distribution
+
+Ujwala Mote:
+    - Watched professors videos. Learnt about vmx, cpuid and exits from intel SDM.
+    - Used assignment 1 instance. 
+    - Cloned the repo to get the latest Linux kernel.
+    - Changed cpuid.c and vmx.c for 0x4FFFFFFC leaf.
+    - Installed an ubuntu VM.
+    - Tested the code changes with test.c and cpuid with leaf 0x4FFFFFFC.
+
+Chinmayi Sunku: 
+    - Watched the video posted by professor and referred the intel SDM.
+    - Used the instance created by assignment 1 which had nested virtulization enabled.
+    - cloned the latest linux kernel and built it.
+    - Made changes to cpuid.c and vmx.c for 0x4FFFFFFD leaf
+    - Installed a VM (nested VM) over it.
+    - Ran the test.c to generate the output.
+    - Checked the output using cpuid as well.
+
 ## GCP instance config
 
 ## Enabling nested virtualization on the GCP instance 
