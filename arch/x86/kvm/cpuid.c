@@ -1510,8 +1510,8 @@ int kvm_emulate_cpuid(struct kvm_vcpu *vcpu)
 		eax = total_exits;
 	}
 	else if(eax == 0x4FFFFFFD){
-		ebx = cpu_cycles >> 32;
-                ecx = cpu_cycles & 0xffffffff;
+		ebx = total_cycles >> 32;
+                ecx = total_cycles & 0xffffffff;
                 edx = 0;
 	}
 	else {
