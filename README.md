@@ -35,7 +35,6 @@
     
     - Once the build is done run sudo reboot
     - And then check the uname –a which will be new version of linux.
-![image](https://user-images.githubusercontent.com/112213523/205819138-a0ff144d-c3eb-4cda-8c13-868a8a78d375.png)
 
 ## Make the code changes as per the assignment requirement
     - Edit the cupid.c file and vmx.c file then rebuild kernel using commands:
