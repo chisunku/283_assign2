@@ -109,7 +109,7 @@ Note:
     2. to check total number of cycles run command cpuid -1 -l 0x4ffffffd. It will give hexadecimal number which we need to convert to decimal using command echo $((16#hexNum))
 <img width="468" alt="image" src="https://user-images.githubusercontent.com/112213523/205819810-d8163a52-f5eb-446d-af11-807d0dca4bd3.png">
 
-    - with test file:
+    - Rebooted the inner VM and tested using test file:
 ![WhatsApp Image 2022-12-05 at 8 50 42 PM](https://user-images.githubusercontent.com/112213523/205819900-6ce642c0-077c-4507-a34e-414bda812216.jpeg)
 
 
