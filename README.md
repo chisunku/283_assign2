@@ -61,9 +61,9 @@
         sudo modprobe kvm_intel
 <img width="468" alt="image" src="https://user-images.githubusercontent.com/112213523/205819611-d1a26134-4a68-4a4f-b947-6524dd614022.png">
 
-##Test:
+## Test:
 
-###Install nested VM
+### Install nested VM
 
     - sudo apt-get install cpu-checker
     - sudo apt update
