@@ -1495,6 +1495,10 @@ u32 total_exits;
 EXPORT_SYMBOL(total_exits);
 u64 total_cycles;
 EXPORT_SYMBOL(total_cycles);
+u32 number_of_exits[69];
+EXPORT_SYMBOL(number_of_exits);
+u64 time_for_exit[69];
+EXPORT_SYMBOL(time_for_exit);
 int kvm_emulate_cpuid(struct kvm_vcpu *vcpu)
 {
 	u32 eax, ebx, ecx, edx;
@@ -1513,6 +1517,33 @@ int kvm_emulate_cpuid(struct kvm_vcpu *vcpu)
 		ebx = total_cycles >> 32;
                 ecx = total_cycles & 0xffffffff;
                 edx = 0;
+	}
+	else if(eax == 0x4FFFFFFE){
+		//check exit number range and if its defined in SDM
+		if(ecx < 0 || ecx > 69 || ecx == 35 || ecx == 38 || ecx == 42){
+			eax = 0;
+			ebx = 0;
+			ecx = 0;
+			edx = 0xFFFFFFFF;
+		}
+		//check not enabled by kvm -- donno how to check
+		else{
+			eax = number_of_exits[ecx];
+		}
+	}	
+	else if(eax == 0x4FFFFFFF){
+		if(ecx < 0 || ecx > 69 || ecx == 35 || ecx == 38 || ecx == 42){
+                        eax = 0;
+                        ebx = 0;
+                        ecx = 0;
+                        edx = 0xFFFFFFFF;
+                }
+                //check not enabled by kvm -- donno how to check
+                else{
+                        ebx = time_for_exit[ecx] >> 32;
+                	ecx = time_for_exit[ecx] & 0xffffffff;
+                	edx = 0;
+                }
 	}
 	else {
 		kvm_cpuid(vcpu, &eax, &ebx, &ecx, &edx, false);
